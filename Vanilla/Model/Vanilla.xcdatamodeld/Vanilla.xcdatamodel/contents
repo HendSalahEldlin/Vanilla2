@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="FavRecipe" representedClassName="FavRecipe" syncable="YES" codeGenerationType="class">
+        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="minutes" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="servings" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <attribute name="url" attributeType="String" syncable="YES"/>
+        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Ingredient" inverseName="favRecipe" inverseEntity="Ingredient" syncable="YES"/>
+        <relationship name="instructions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Instruction" inverseName="favRecipe" inverseEntity="Instruction" syncable="YES"/>
+    </entity>
+    <entity name="Ingredient" representedClassName="Ingredient" syncable="YES" codeGenerationType="class">
+        <attribute name="image" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="original" attributeType="String" syncable="YES"/>
+        <attribute name="recipeId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="favRecipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FavRecipe" inverseName="ingredients" inverseEntity="FavRecipe" syncable="YES"/>
+    </entity>
+    <entity name="Instruction" representedClassName="Instruction" syncable="YES" codeGenerationType="class">
+        <attribute name="recipeId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="step" attributeType="String" syncable="YES"/>
+        <relationship name="favRecipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FavRecipe" inverseName="instructions" inverseEntity="FavRecipe" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="FavRecipe" positionX="-54" positionY="-9" width="128" height="180"/>
+        <element name="Ingredient" positionX="-36" positionY="63" width="128" height="105"/>
+        <element name="Instruction" positionX="-18" positionY="81" width="128" height="90"/>
+    </elements>
+</model>
